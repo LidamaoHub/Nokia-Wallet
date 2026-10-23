@@ -1,6 +1,26 @@
+![NWallet — Classic hardware. New purpose.](docs/public/assets/nwallet-cover.png)
+
+<p align="center">
+  <code>JAVA ME</code> · <code>CLASSIC BLUETOOTH</code> · <code>PHYSICAL KEYS</code>
+</p>
+
 # NWallet · Nokia Wallet
 
 **让经典设备，承担新的角色。**
+
+> Old keys. New ideas. Explicit consent.
+
+```text
+┌─ NWALLET / SYSTEM PROFILE ──────────────────┐
+│ TARGET   Nokia C5                           │
+│ RUNTIME  Java ME · CLDC 1.1 / MIDP 2.0      │
+│ LINK     Classic Bluetooth / RFCOMM         │
+│ CONTROL  Physical keys. Explicit review.    │
+│ MODE     PUBLIC FIXTURES ONLY               │
+└─────────────────────────────────────────────┘
+```
+
+<sub>封面为概念视觉；实际功能与验证范围以下文为准。</sub>
 
 NWallet 是面向 Nokia C5 的 Java ME 钱包实验项目。通过实体按键确认、电脑网页和 macOS 经典蓝牙桥接，完成公开样本钱包的创建、打开与地址核对。
 
@@ -138,3 +158,10 @@ make -C signer test test-radio test-consent test-wallet-flow test-ui
 - [第三方来源与许可](docs/public/THIRD_PARTY.md)
 
 第三方源文件保留上游版权及许可证；本仓库尚未指定原创代码的开源许可证。
+
+---
+
+<p align="center">
+  <code>LESS TOUCHSCREEN. MORE TACTILE.</code><br>
+  <sub>经典按键，新用途。每次确认，都有明确的动作。</sub>
+</p>
