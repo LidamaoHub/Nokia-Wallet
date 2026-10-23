@@ -36,7 +36,7 @@ flowchart LR
     Phone --> Review[实体按键核对与确认]
 ```
 
-手机创建内置12／24词公开样本根；网页添加钱包并传入公开测试 passphrase。手机完整展示内容，用户确认后实际派生 BTC、ETH、SOL 地址，网页校验结果后加密保存记录。打开钱包不批准交易。
+手机选择内置12／24词公开助记词；网页添加钱包并传入公开测试 passphrase。手机完整展示内容，用户确认后实际派生 BTC、ETH、SOL 地址，网页校验结果后加密保存记录。打开钱包不批准交易。
 
 客户端与手机各自承担不同职责：网页负责钱包列表、备注、加密存储和阅后即焚；手机负责本次连接授权、内容确认、公开样本派生和内存缓存。手机无需显示余额或维护持久钱包列表。
 
@@ -110,12 +110,12 @@ python3 signer/tools/fetch-deps.py
 make -C signer nwallet
 ```
 
-手机版本为 **0.3.1**，安装文件位于：
+手机版本为 **0.3.2**，安装文件位于：
 
 ```text
-signer/dist/nwallet-0.3.1/NWallet.jar
-signer/dist/nwallet-0.3.1/NWallet.jad
-signer/dist/nwallet-0.3.1/SHA256SUMS
+signer/dist/nwallet-0.3.2/NWallet.jar
+signer/dist/nwallet-0.3.2/NWallet.jad
+signer/dist/nwallet-0.3.2/SHA256SUMS
 ```
 
 依赖下载至本项目 `.deps/`，按锁文件校验 SHA256；构建产物不进入源码仓库。打包拒绝覆盖已有同版本 JAR，重新打包前需明确归档或使用新版本号。
@@ -123,7 +123,7 @@ signer/dist/nwallet-0.3.1/SHA256SUMS
 ## 第一次体验
 
 1. 在手机安装 JAR，设置并重复确认样本 PIN。
-2. 手机“设置 → 创建样本根钱包”，上下选择12／24词，右软键创建。
+2. 手机“设置 → 选择助记词”，上下选择12／24词，右软键选用。
 3. 首页开启蓝牙服务，在网页手工选择设备连接，再在手机允许本次连接。
 4. 网页点击“添加”，输入备注及公开测试 passphrase；空串有效，大小写与首尾空格保留。
 5. 手机上下查阅，左软键拒绝、右软键确认；派生过程中左软键可请求取消。

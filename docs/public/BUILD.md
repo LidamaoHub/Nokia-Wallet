@@ -39,14 +39,14 @@ make -C signer nwallet
 make -C signer test test-radio test-consent test-wallet-flow test-ui
 ```
 
-`compile` 只编译；`nwallet` 进行 CLDC 预校验和打包。安装包位于 `signer/dist/nwallet-0.3.1/`。打包拒绝覆盖已有同版本 JAR；需要重新打包时保留旧包，再使用新的版本号或明确的归档目录。
+`compile` 只编译；`nwallet` 进行 CLDC 预校验和打包。安装包位于 `signer/dist/nwallet-0.3.2/`。打包拒绝覆盖已有同版本 JAR；需要重新打包时保留旧包，再使用新的版本号或明确的归档目录。
 
 测试产生的截图与帧夹具默认写入 `signer/build/evidence/`，不提交版本控制。Canvas检查使用桌面字体和假UI／RMS，协议测试使用内存传输；不能视为真机或无线通过。
 
 跨实现地址检查及原生帧互通：
 
 ```sh
-NWALLET_JAR=dist/nwallet-0.3.1/NWallet.jar npm --prefix web run test:interop
+NWALLET_JAR=dist/nwallet-0.3.2/NWallet.jar npm --prefix web run test:interop
 mac-bridge/dist/NokiaWalletBridge.app/Contents/MacOS/NokiaWalletBridge --wallet-flow-interop --fixtures signer/build/evidence/wallet-frames.txt
 ```
 

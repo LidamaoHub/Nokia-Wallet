@@ -71,9 +71,9 @@ public final class NWalletCanvas extends Canvas {
  private void readContent(Graphics g,String content,int y,int bottom,int w){int width=w-21,total=wrappedHeight(content,width),viewport=Math.max(body.getHeight()+3,(bottom-y-4)/(body.getHeight()+3)*(body.getHeight()+3)),max=Math.max(0,total-viewport);scroll=Math.min(Math.max(0,scroll),max);g.setClip(8,y,w-16,viewport);wrapped(g,content,10,y-scroll,width,INK);g.setClip(0,y,w,Math.max(0,bottom-y-3));scrollbar(g,w,y,viewport,total);}
  private void scrollbar(Graphics g,int w,int y,int viewport,int total){if(total<=viewport)return;g.setColor(LINE);g.fillRect(w-5,y,2,viewport);int thumb=Math.max(10,viewport*viewport/total),top=y+(viewport-thumb)*scroll/(total-viewport);g.setColor(BLUE);g.fillRect(w-5,top,2,thumb);}
  private void paintWallet(Graphics g,int w,int h,int bar,int titleH){int bottom=h-bar,y=bar+titleH;title(g,walletMode==1?t(NWalletText.ROOT):walletTitle,bar,w,titleH);g.setClip(0,y,w,bottom-y);
-  if(walletMode==1){y=band(g,local("选择公开样本","Choose public fixture"),y+5,w);for(int i=0;i<2;i++){int row=body.getHeight()+20;if(rootChoice==i)highlight(g,8,y,w-16,row);g.setFont(strong);g.setColor(INK);g.drawString((i==0?"12":"24")+local(" 词公开样本","-word public fixture"),17,y+10,Graphics.TOP|Graphics.LEFT);g.setColor(MUTED);chevron(g,w-20,y+row/2-4);y+=row+5;}wrapped(g,notice.length()>0?notice:local("仅内置零熵公开样本。更换根会断开连接并清理打开缓存。","Public zero-entropy fixtures only. Changing root disconnects and clears open caches."),10,y+12,w-20,notice.length()>0?RED:MUTED);}
-  else{String label=walletMode==2?local("客户端传入内容","Received from client"):walletMode==3?local("处理中 · 尚未完成","Processing · Not complete"):local("处理结果","Result");y=band(g,label,y+5,w);readContent(g,walletContent,y,bottom,w);}
-  String left=walletMode==1?t(11):walletMode==2?local("拒绝","Reject"):walletMode==3?local("取消","Cancel"):"",right=walletMode==1?local("创建","Create"):walletMode==2?local("确认","Confirm"):walletMode==4?t(11):"";
+  if(walletMode==1){y=band(g,local("选择示例助记词","Choose demo mnemonic"),y+5,w);for(int i=0;i<2;i++){int row=body.getHeight()+20;if(rootChoice==i)highlight(g,8,y,w-16,row);g.setFont(strong);g.setColor(INK);g.drawString((i==0?"12":"24")+local(" 词示例助记词","-word demo mnemonic"),17,y+10,Graphics.TOP|Graphics.LEFT);g.setColor(MUTED);chevron(g,w-20,y+row/2-4);y+=row+5;}wrapped(g,notice.length()>0?notice:local("仅供测试的公开助记词。切换后将断开连接，并关闭已打开的钱包。","Public test mnemonics only. Switching disconnects and closes opened wallets."),10,y+12,w-20,notice.length()>0?RED:MUTED);}
+  else{String label=walletMode==2?local("请核对附加口令","Review passphrase"):walletMode==3?local("处理中 · 尚未完成","Processing · Not complete"):local("处理结果","Result");y=band(g,label,y+5,w);readContent(g,walletContent,y,bottom,w);}
+  String left=walletMode==1?t(11):walletMode==2?local("拒绝","Reject"):walletMode==3?local("取消","Cancel"):"",right=walletMode==1?local("选用","Use"):walletMode==2?local("确认","Confirm"):walletMode==4?t(11):"";
   softkeys(g,w,h,bar,left,"",right);
  }
  private void paintGate(Graphics g,int w,int h,int bar,int titleH){int bottom=h-bar,y=bar+titleH;title(g,pinPage?pinTitle:local("允许客户端连接？","Allow this client?"),bar,w,titleH);g.setClip(0,y,w,bottom-y);
@@ -87,9 +87,10 @@ public final class NWalletCanvas extends Canvas {
   else if(kind==1){g.fillRoundRect(x+3,y+3,13,13,4,4);g.fillRect(x+7,y,5,19);g.fillRect(x,y+7,19,5);g.drawLine(x+2,y+2,x+16,y+16);g.drawLine(x+2,y+16,x+16,y+2);g.setColor(nav.tab()==1?BLUE:BG);g.fillRoundRect(x+7,y+7,5,5,4,4);}
   else{g.drawRoundRect(x,y+1,18,15,2,2);g.drawLine(x+9,y+1,x+9,y+16);g.drawLine(x+2,y+3,x+6,y+3);g.drawLine(x+12,y+3,x+16,y+3);g.drawLine(x+2,y+6,x+6,y+6);g.drawLine(x+12,y+6,x+16,y+6);}
  }
- private void bluetooth(Graphics g,int x,int y,int size){int mid=y+size/2;g.drawLine(x+4,y,x+4,y+size);g.drawLine(x+4,y,x+9,y+size/4);g.drawLine(x+9,y+size/4,x,mid+size/3);g.drawLine(x,mid-size/3,x+9,y+size*3/4);g.drawLine(x+9,y+size*3/4,x+4,y+size);}
+ /** Bluetooth rune in a proportional square, shared by status and action icons. */
+ private void bluetooth(Graphics g,int x,int y,int size){int left=x+size/4,center=x+size/2,right=x+size*3/4,upper=y+size/4,lower=y+size*3/4;g.drawLine(center,y,center,y+size);g.drawLine(center,y,right,upper);g.drawLine(right,upper,left,lower);g.drawLine(left,upper,right,lower);g.drawLine(right,lower,center,y+size);}
  private void largeIcon(Graphics g,int kind,int x,int y){
-  if(kind==NWalletText.BLUETOOTH){bluetooth(g,x+5,y,28);bluetooth(g,x+6,y,28);}
+  if(kind==0||kind==NWalletText.BLUETOOTH){bluetooth(g,x,y,28);bluetooth(g,x+1,y,28);}
   else if(kind==1||kind==NWalletText.PIN){g.drawRoundRect(x+6,y,16,17,10,10);g.drawRoundRect(x+7,y+1,14,16,8,8);g.fillRoundRect(x+2,y+12,25,18,3,3);}
   else if(kind==NWalletText.LANGUAGE){g.drawLine(x+2,y+5,x+21,y+5);g.drawLine(x+11,y,x+11,y+5);g.drawLine(x+6,y+8,x+22,y+23);g.drawLine(x+18,y+6,x+2,y+24);g.drawLine(x+17,y+27,x+24,y+12);g.drawLine(x+24,y+12,x+31,y+27);g.drawLine(x+20,y+22,x+28,y+22);}
   else if(kind==NWalletText.ROOT){g.drawRoundRect(x+5,y+1,21,27,3,3);g.drawLine(x+10,y+8,x+22,y+8);g.drawLine(x+10,y+14,x+22,y+14);g.drawLine(x+10,y+20,x+18,y+20);}

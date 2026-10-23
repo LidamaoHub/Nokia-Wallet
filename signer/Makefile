@@ -4,7 +4,7 @@ export DEPS := $(abspath $(DEPS))
 JAVA ?= java
 JAVAC ?= javac
 EVIDENCE_DIR ?= build/evidence
-TEST_JAR ?= dist/nwallet-0.3.1/NWallet.jar
+TEST_JAR ?= dist/nwallet-0.3.2/NWallet.jar
 CP := $(DEPS)/cldcapi11-2.0.4.jar:$(DEPS)/midpapi20-2.0.4.jar:build/stubs
 .PHONY: all compile nwallet test test-radio test-consent test-wallet-flow test-ui
 all: nwallet

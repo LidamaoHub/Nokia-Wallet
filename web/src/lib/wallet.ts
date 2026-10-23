@@ -6,7 +6,7 @@ export const PATHS={BTC:"m/44'/0'/0'/0/0",ETH:"m/44'/60'/0'/0/0",SOL:"m/44'/501'
 export type Chain=keyof typeof PATHS;
 export type Bundle={words:12|24;addresses:Record<Chain,string>};
 export function publicPhrase(words:12|24){return Array(words-1).fill('abandon').join(' ')+(words===12?' about':' art');}
-export function validatePassphrase(pass:string){if(!/^[\x20-\x7e]{0,50}$/.test(pass))throw Error('仅接受0–50个可打印ASCII字符，保留空格和大小写');}
+export function validatePassphrase(pass:string){if(!/^[\x20-\x7e]{0,50}$/.test(pass))throw Error('口令最多50个英文字母、数字、符号或空格，保留大小写及首尾空格');}
 export function base58(input:Uint8Array){const alphabet='123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';let n=BigInt('0x'+Array.from(input,b=>b.toString(16).padStart(2,'0')).join('')),text='';while(n){text=alphabet[Number(n%58n)]+text;n/=58n;}for(const b of input){if(b!==0)break;text='1'+text;}return text;}
 export function reference(words:12|24,pass:string):Bundle {
  validatePassphrase(pass);if(words!==12&&words!==24)throw Error('词数无效');
@@ -21,8 +21,8 @@ export function reference(words:12|24,pass:string):Bundle {
  }finally{seed.fill(0);}
 }
 export function parseBundle(text:string):Bundle {
- if(typeof text!=='string'||new TextEncoder().encode(text).length>512)throw Error('地址交接过长');
- const lines=text.split('\n');if(lines.length!==5||lines[0]!=='NKW1'||!['12','24'].includes(lines[1]))throw Error('不是NKW1公开地址交接');
+ if(typeof text!=='string'||new TextEncoder().encode(text).length>512)throw Error('地址文本过长');
+ const lines=text.split('\n');if(lines.length!==5||lines[0]!=='NKW1'||!['12','24'].includes(lines[1]))throw Error('请粘贴完整的 NKW1 钱包地址文本');
  const addresses={} as Record<Chain,string>;
  for(const [i,chain] of (['BTC','ETH','SOL'] as const).entries()){
   const fields=lines[i+2].split('|');if(fields.length!==3||fields[0]!==chain||fields[1]!==PATHS[chain])throw Error('链或路径不匹配');

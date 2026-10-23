@@ -2,7 +2,7 @@
 from pathlib import Path
 import sys,hashlib,json,shutil,zipfile,struct,os
 R=Path(__file__).resolve().parents[1]
-NWALLET_VERSION='0.3.1'
+NWALLET_VERSION='0.3.2'
 ATTR={'MIDlet-Name':'Nokia Wallet Dev','MIDlet-Vendor':'NokiaWalletDev','MIDlet-Version':'0.1.4','MIDlet-1':'Nokia Wallet Dev,,WalletMIDlet','MicroEdition-Configuration':'CLDC-1.1','MicroEdition-Profile':'MIDP-2.0','MIDlet-Permissions-Opt':'javax.microedition.io.Connector.bluetooth.server, javax.microedition.io.Connector.bluetooth.client'}
 def prepare():
  lock=R/'deps.lock';deps=Path(os.environ.get('DEPS',str(R/'.deps/j2me'))).resolve();wanted={'ecj-3.33.0.jar','cldcapi11-2.0.4.jar','midpapi20-2.0.4.jar','proguard-7.9.1/lib/proguard.jar'}
