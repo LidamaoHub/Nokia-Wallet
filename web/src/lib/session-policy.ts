@@ -1,0 +1,1 @@
+export const SESSION_IDLE_MS=15*60*1000;

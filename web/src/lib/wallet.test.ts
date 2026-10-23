@@ -1,0 +1,14 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';
+import {reference,publicPhrase,parseBundle,compare,PATHS,validatePassphrase,base58} from './wallet';
+import {allowed,enabled,action} from './policy';
+test('public BIP39 zero-entropy samples and known 12-word empty-pass addresses',()=>{assert.equal(publicPhrase(12).split(' ').length,12);assert.equal(publicPhrase(24).split(' ').length,24);const r=reference(12,'');assert.equal(r.addresses.BTC,'1LqBGSKuX5yYUonjxT5qGfpUsXKYYWeabA');assert.equal(r.addresses.ETH.toLowerCase(),'0x9858effd232b4033e47d90003d41ec34ecaeda94');assert.equal(base58(new Uint8Array([0,0,1])),'112');});
+test('ASCII, spaces and case preserve distinct wallets',()=>{for(const p of ['中文','Ａ','\n','x'.repeat(51)])assert.throws(()=>validatePassphrase(p));for(const p of ['','TREZOR',' a ','A','a'])validatePassphrase(p);assert.notEqual(reference(12,' a ').addresses.ETH,reference(12,'a').addresses.ETH);assert.notEqual(reference(12,'A').addresses.ETH,reference(12,'a').addresses.ETH);});
+test('bounded bundle, exact paths, no injected fields or secret-bearing formats',()=>{const r=reference(24,'TREZOR');const b=['NKW1','24',...(['BTC','ETH','SOL'] as const).map(c=>`${c}|${PATHS[c]}|${r.addresses[c]}`)].join('\n');assert.ok(compare(parseBundle(b),r));assert.throws(()=>parseBundle(b+'\nsecret'));assert.throws(()=>parseBundle(b.replace(PATHS.BTC,'m/0')));assert.throws(()=>parseBundle('x'.repeat(513)));assert.throws(()=>parseBundle(b.replace('24','13')));assert.equal(compare({...r,words:12},r),false);});
+test('independent environment and GET/POST action boundaries',()=>{assert.ok(enabled({NOKIA_WALLET_LOCAL_MODE:'1'},'darwin'));assert.equal(enabled({NOKIA_LOCAL_MODE:'1'},'darwin'),false);assert.equal(enabled({NOKIA_WALLET_LOCAL_MODE:'1',VERCEL:'1'},'darwin'),false);assert.ok(allowed('127.0.0.1:3018','http://127.0.0.1:3018'));assert.equal(allowed('127.0.0.1:3018','http://127.0.0.1:3017'),false);assert.equal(allowed('evil.example','http://evil.example'),false);for(const v of [{action:'vault-load'},{action:'message',text:'secret'},{action:'status',passphrase:'x'},{action:'connect',address:'not-device'}])assert.throws(()=>action(v));assert.deepEqual(action({action:'status'}),{action:'status'});});
+
+test('legacy lower-case import normalizes to EIP55 but bad mixed case is rejected',()=>{
+ const r=reference(12,'');const raw=['NKW1','12',...(['BTC','ETH','SOL'] as const).map(c=>`${c}|${PATHS[c]}|${c==='ETH'?r.addresses[c].toLowerCase():r.addresses[c]}`)].join('\n');
+ assert.equal(parseBundle(raw).addresses.ETH,r.addresses.ETH);
+ const address=r.addresses.ETH;const at=[...address].findIndex((c,i)=>i>=2&&/[a-fA-F]/.test(c));const c=address[at];const flipped=address.slice(0,at)+(c===c.toLowerCase()?c.toUpperCase():c.toLowerCase())+address.slice(at+1);
+ assert.throws(()=>parseBundle(raw.replace(address.toLowerCase(),flipped)));
+});

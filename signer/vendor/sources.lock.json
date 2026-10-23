@@ -1,0 +1,62 @@
+[
+  {
+    "path": "org/bouncycastle/crypto/Digest.java",
+    "url": "https://raw.githubusercontent.com/bcgit/bc-java/r1rv60/core/src/main/java/org/bouncycastle/crypto/Digest.java",
+    "sha256": "c402f28cde7ff452c23d8c3095d3a83926002d98112d9b0175ef54685401c1f8"
+  },
+  {
+    "path": "org/bouncycastle/crypto/ExtendedDigest.java",
+    "url": "https://raw.githubusercontent.com/bcgit/bc-java/r1rv60/core/src/main/java/org/bouncycastle/crypto/ExtendedDigest.java",
+    "sha256": "c9d627426df7274d14d8b77609040e715137778136a7399b83516739d1f62b4b"
+  },
+  {
+    "path": "org/bouncycastle/crypto/digests/GeneralDigest.java",
+    "url": "https://raw.githubusercontent.com/bcgit/bc-java/r1rv60/core/src/main/java/org/bouncycastle/crypto/digests/GeneralDigest.java",
+    "sha256": "cbfd55661cc27d7bf0eb47f8097f96b1d04ff0c029aba97f071c5ec55cba98c3"
+  },
+  {
+    "path": "org/bouncycastle/crypto/digests/LongDigest.java",
+    "url": "https://raw.githubusercontent.com/bcgit/bc-java/r1rv60/core/src/main/java/org/bouncycastle/crypto/digests/LongDigest.java",
+    "sha256": "36463545ea728d12557f5fc414768e9a9bd122d17e2adcfc67fbac20ac2d6cb6"
+  },
+  {
+    "path": "org/bouncycastle/crypto/digests/SHA256Digest.java",
+    "url": "https://raw.githubusercontent.com/bcgit/bc-java/r1rv60/core/src/main/java/org/bouncycastle/crypto/digests/SHA256Digest.java",
+    "sha256": "8951e2914fa479bd0a1c9aff71043542c5e211e0954e5e7be559b415e6a0ecd4"
+  },
+  {
+    "path": "org/bouncycastle/crypto/digests/SHA512Digest.java",
+    "url": "https://raw.githubusercontent.com/bcgit/bc-java/r1rv60/core/src/main/java/org/bouncycastle/crypto/digests/SHA512Digest.java",
+    "sha256": "c39d71e18f951489479939dd893b32014cbaf9a1d06a1504af82a0740bd90f2a"
+  },
+  {
+    "path": "org/bouncycastle/crypto/digests/RIPEMD160Digest.java",
+    "url": "https://raw.githubusercontent.com/bcgit/bc-java/r1rv60/core/src/main/java/org/bouncycastle/crypto/digests/RIPEMD160Digest.java",
+    "sha256": "251ec865d5a32a1813c53cee8895ae2465b7cb0caa553ccdca96cfa95cfe491d"
+  },
+  {
+    "path": "org/bouncycastle/crypto/digests/KeccakDigest.java",
+    "url": "https://raw.githubusercontent.com/bcgit/bc-java/r1rv60/core/src/main/java/org/bouncycastle/crypto/digests/KeccakDigest.java",
+    "sha256": "c574ec1ccf0bd1cf92b8738fc0f05dee8ef5691ee7e1f1107e3af261c2f604c2"
+  },
+  {
+    "path": "org/bouncycastle/crypto/digests/EncodableDigest.java",
+    "url": "https://raw.githubusercontent.com/bcgit/bc-java/r1rv60/core/src/main/java/org/bouncycastle/crypto/digests/EncodableDigest.java",
+    "sha256": "76b6bcac574b5373fab2174cdf7555811f24e12351167408c52070e04b422d85"
+  },
+  {
+    "path": "org/bouncycastle/util/Memoable.java",
+    "url": "https://raw.githubusercontent.com/bcgit/bc-java/r1rv60/core/src/main/java/org/bouncycastle/util/Memoable.java",
+    "sha256": "6c835a1a6a0fbe97f694a78e0576f5946cfd6aee05cf77e99140de4f104fde11"
+  },
+  {
+    "path": "org/bouncycastle/util/Pack.java",
+    "url": "https://raw.githubusercontent.com/bcgit/bc-java/r1rv60/core/src/main/java/org/bouncycastle/util/Pack.java",
+    "sha256": "9704f5350434d32761cebe9f96e9d6570f6df8484ab3c84ff34a9252661b40ea"
+  },
+  {
+    "path": "WalletBigInteger.original.java.txt",
+    "url": "https://raw.githubusercontent.com/bcgit/bc-java/r1rv79/core/src/main/j2me/java/math/BigInteger.java",
+    "sha256": "b37a7a4727c5c7f700ef97e442c4a0da3aae173506faa9cacce818be23d51d3e"
+  }
+]

@@ -1,0 +1,53 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts",
+    ".next-connection-flow/types/**/*.ts",
+    ".next-connection-flow/dev/types/**/*.ts",
+    ".next-reconnect/types/**/*.ts",
+    ".next-reconnect/dev/types/**/*.ts",
+    ".next-reconnect-final/types/**/*.ts",
+    ".next-reconnect-final/dev/types/**/*.ts",
+    ".next-cache-recovery/types/**/*.ts",
+    ".next-cache-recovery/dev/types/**/*.ts",
+    ".next-session-continuity/types/**/*.ts",
+    ".next-session-continuity/dev/types/**/*.ts",
+    ".next-wallet-flow/types/**/*.ts",
+    ".next-wallet-flow/dev/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

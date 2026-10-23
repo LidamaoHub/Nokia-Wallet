@@ -1,0 +1,44 @@
+# Dependencies and generated builds
+**/node_modules/
+**/.next/
+**/.next-*/
+**/build/
+**/dist/
+**/.deps/
+**/*.tsbuildinfo
+**/__pycache__/
+*.pyc
+*.log
+.DS_Store
+
+# Local settings, credentials, archives and runtime state
+.env*
+*.pem
+*.p12
+*.pfx
+*.key
+*.jks
+*.keystore
+*.jsonl
+*.har
+*.trace
+*.log.*
+
+# Private design/development history stays local; publish curated docs only
+/docs/*
+!/docs/public/
+/PRODUCT.md
+/DESIGN.md
+/.impeccable/
+/design-prototype/
+**/AGENTS.md
+**/SKILL.md
+**/.codex/
+**/.agents/
+**/*prompt*.txt
+
+# Local browser harnesses depend on private evidence and machine runtimes
+/web/tools/*.cjs
+
+# Next.js regenerates this file with local build-directory references
+/web/next-env.d.ts

@@ -1,0 +1,15 @@
+-microedition
+-dontoptimize
+-dontobfuscate
+-keep public class WalletMIDlet extends javax.microedition.midlet.MIDlet { *; }
+-keep public class NWalletMIDlet extends javax.microedition.midlet.MIDlet { *; }
+-keep class WalletCore { public *; }
+-dontwarn java.lang.Cloneable
+-keep class WalletTransfer { public *; }
+-keep class DerivationJob { public *; }
+-keep interface DerivationProgress { *; }
+-keep class SecretInput { public *; }
+-keep class EvmAddress { public *; }
+
+-keep class SampleWallets { public *; }
+-keep class SampleWallets$Request { public *; }

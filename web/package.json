@@ -1,0 +1,41 @@
+{
+  "name": "nokia-wallet-dev",
+  "version": "0.1.3",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --hostname 127.0.0.1 --port 3018",
+    "build": "next build",
+    "start": "next start --hostname 127.0.0.1 --port 3018",
+    "test": "tsx --test src/lib/*.test.ts",
+    "typecheck": "tsc --noEmit",
+    "test:interop": "tsx tools/check-java.ts"
+  },
+  "dependencies": {
+    "@noble/curves": "1.2.0",
+    "@noble/hashes": "1.3.2",
+    "@radix-ui/react-dialog": "1.3.1",
+    "@radix-ui/react-slot": "^1.2.3",
+    "@radix-ui/react-tabs": "^1.2.1",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "ethers": "^6.15.0",
+    "jsqr": "1.4.0",
+    "lucide-react": "^0.468.0",
+    "motion": "^14.5.0",
+    "next": "16.4.1",
+    "qrcode": "1.5.4",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "tailwind-merge": "^3.3.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.0",
+    "@types/node": "^24.0.0",
+    "@types/qrcode": "^1.5.5",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "tailwindcss": "^4.1.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.3"
+  }
+}
